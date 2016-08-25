@@ -10,6 +10,8 @@
               <%= image_tag employee.image.url(:medium)  %>
               <%= link_to 'Show', employee, :class=>"btn btn-success" %>
               <%= link_to 'Edit', edit_employee_path(employee), :class=>"btn btn-info" %>
+              <!-- <button class="btn btn-info" data-toggle="modal" data-target="#editemployee"> -->
+              <!-- Edit </button> -->
               <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %>              
             </div>
          <% end %>
@@ -46,16 +48,19 @@
                 <%= form_for @employee, :html => {:class => 'form-horizontal', :role=>"form", multipart: true } do |f| %>
                       <div class="form-group">
                         <%= f.label :name, :class=>"col-sm-2 control-label" %>
-                        <%= f.text_field :name, :class=>"col-sm-10" %>
+                        <%= f.text_field :name, :class=>"col-sm-10", data: { 'ng-model' => 'name' }  %>
                       </div>
+                      {{name}}
                       <div class="form-group">
                         <%= f.label :address, :class=>"col-sm-2 control-label" %>
-                        <%= f.text_area :address, :class=>"col-sm-10"  %>
+                        <%= f.text_area :address, :class=>"col-sm-10", data: { 'ng-model' => 'address' }  %>
                       </div>
+                      {{address}}
                       <div class="form-group">
                         <%= f.label :designation, :class=>"col-sm-2 control-label" %>
-                        <%= f.text_field :designation, :class=>"col-sm-10"  %>
+                        <%= f.text_field :designation, :class=>"col-sm-10", data: { 'ng-model' => 'designation' }  %>
                       </div>
+                      {{designation}}
                       <div class="form-group">
                         <%= f.label :image, :class=>"col-sm-2 control-label" %>
                         <%= f.file_field :image, :class=>"col-sm-10"  %>
@@ -71,4 +76,5 @@
         </div>
     </div>
 </div>
+
 
